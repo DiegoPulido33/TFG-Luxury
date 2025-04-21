@@ -47,7 +47,7 @@ export default function ContactPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
-      <main className="flex-1">
+      <main className=" flex items-center justify-center">
         <div className="container py-24">
           <div className="mx-auto max-w-3xl">
             <Card>

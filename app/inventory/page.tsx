@@ -44,7 +44,7 @@ const categories = [
 
 export default function InventoryPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col flex items-center justify-center">
       <SiteHeader />
       <main className="flex-1">
         <section className="container py-24">
