@@ -5,40 +5,40 @@ import Link from "next/link"
 
 const categories = [
   {
-    title: "Luxury Cars",
+    title: "Coches de Lujo",
     href: "/inventory/luxury",
-    image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "Experience unparalleled comfort and sophistication"
+    image: "/images/RR.webp",
+    description: "Experimenta un confort y sofisticación incomparables"
   },
   {
-    title: "Sports Cars",
+    title: "Coches Deportivos",
     href: "/inventory/sports",
     image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "Pure performance and driving excellence"
+    description: "Puro rendimiento y excelencia en conducción"
   },
   {
-    title: "Formula 1",
+    title: "Fórmula 1",
     href: "/inventory/formula-one",
-    image: "https://images.unsplash.com/photo-1515036551567-bf1198cccc35?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "Experience the pinnacle of motorsport engineering"
+    image: "/images/F1.webp",
+    description: "Experimenta la cúspide de la ingeniería del automovilismo"
   },
   {
-    title: "Classic Collection",
+    title: "Colección Clásica",
     href: "/inventory/classic",
-    image: "https://images.unsplash.com/photo-1566024287286-457247b70310?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "Timeless automotive masterpieces"
+    image: "/images/Classic1.webp",
+    description: "Obras maestras automotrices atemporales"
   },
   {
-    title: "Motorcycles",
+    title: "Motocicletas",
     href: "/inventory/motorcycles",
     image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "Premium two-wheel excellence"
+    description: "Excelencia premium sobre dos ruedas"
   },
   {
-    title: "Aviation",
+    title: "Aviación",
     href: "/inventory/aviation",
     image: "https://images.unsplash.com/photo-1540962351504-03099e0a754b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "Luxury takes flight"
+    description: "El lujo toma vuelo"
   }
 ]
 
@@ -49,9 +49,9 @@ export default function InventoryPage() {
       <main className="flex-1">
         <section className="container py-24">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">Our Collection</h1>
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">Nuestra Colección</h1>
             <p className="text-lg text-muted-foreground">
-              Explore our carefully curated categories of exceptional vehicles
+              Explora nuestras categorías cuidadosamente seleccionadas de vehículos excepcionales
             </p>
           </div>
 
@@ -71,7 +71,7 @@ export default function InventoryPage() {
                   <CardTitle className="mb-2">{category.title}</CardTitle>
                   <p className="text-muted-foreground mb-4">{category.description}</p>
                   <Button asChild>
-                    <Link href={category.href}>Explore Collection</Link>
+                    <Link href={category.href}>Explorar Colección</Link>
                   </Button>
                 </CardContent>
               </Card>

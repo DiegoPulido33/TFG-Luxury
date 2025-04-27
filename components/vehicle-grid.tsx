@@ -17,27 +17,29 @@ interface VehicleGridProps {
 
 export function VehicleGrid({ vehicles }: VehicleGridProps) {
   return (
-    <div className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      {vehicles.map((vehicle) => (
-        <Card key={vehicle.id} className="group overflow-hidden">
-          <CardHeader className="p-0">
-            <div className="aspect-[16/9] relative overflow-hidden">
-              <img
-                src={vehicle.image}
-                alt={vehicle.name}
-                className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
-          </CardHeader>
-          <CardContent className="p-6">
-            <CardTitle className="mb-2">{vehicle.name}</CardTitle>
-            <p className="text-2xl font-bold text-primary mb-4">{vehicle.price}</p>
-            <Button asChild>
-              <Link href={`/vehicle/${vehicle.id}`}>View Details</Link>
-            </Button>
-          </CardContent>
-        </Card>
-      ))}
+    <div className="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {vehicles.map((vehicle) => (
+          <Card key={vehicle.id} className="group overflow-hidden">
+            <CardHeader className="p-0">
+              <div className="aspect-[16/9] relative overflow-hidden">
+                <img
+                  src={vehicle.image}
+                  alt={vehicle.name}
+                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+            </CardHeader>
+            <CardContent className="p-6">
+              <CardTitle className="mb-2">{vehicle.name}</CardTitle>
+              <p className="text-2xl font-bold text-primary mb-4">{vehicle.price}</p>
+              <Button asChild>
+                <Link href={`/vehicle/${vehicle.id}`}>View Details</Link>
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
   )
 }

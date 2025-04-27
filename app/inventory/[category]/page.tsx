@@ -2,14 +2,14 @@ import { CategoryContent } from "./category-content"
 
 const categoryData = {
   luxury: {
-    title: "Luxury Cars",
-    description: "Experience unparalleled comfort and sophistication with our premium luxury vehicles.",
+    title: "Coches de Lujo",
+    description: "Experimenta un confort y sofisticación incomparables con nuestros vehículos de lujo premium.",
     vehicles: [
       {
         id: 1,
         name: "Rolls-Royce Phantom",
         price: "€450,000",
-        image: "https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        image: "/images/RR.webp",
       },
       {
         id: 2,
@@ -26,8 +26,8 @@ const categoryData = {
     ]
   },
   sports: {
-    title: "Sports Cars",
-    description: "Discover our collection of high-performance sports cars built for the ultimate driving experience.",
+    title: "Coches Deportivos",
+    description: "Descubre nuestra colección de coches deportivos de alto rendimiento creados para la máxima experiencia de conducción.",
     vehicles: [
       {
         id: 3,
@@ -50,26 +50,26 @@ const categoryData = {
     ]
   },
   "formula-one": {
-    title: "Formula 1",
-    description: "Experience the pinnacle of motorsport engineering with our exclusive Formula 1 collection.",
+    title: "Fórmula 1",
+    description: "Experimenta la cúspide de la ingeniería automotriz con nuestra exclusiva colección de Fórmula 1.",
     vehicles: [
       {
         id: 5,
         name: "Mercedes-AMG F1 W12",
-        price: "On Request",
+        price: "A consultar",
         image: "https://images.unsplash.com/photo-1515036551567-bf1198cccc35?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       },
       {
         id: 11,
         name: "Red Bull RB16B",
-        price: "On Request",
+        price: "A consultar",
         image: "https://images.unsplash.com/photo-1514063364521-a61a3cf3a2de?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       }
     ]
   },
   classic: {
-    title: "Classic Collection",
-    description: "Timeless automotive masterpieces that represent the golden age of motoring.",
+    title: "Colección Clásica",
+    description: "Obras maestras atemporales que representan la época dorada del automovilismo.",
     vehicles: [
       {
         id: 6,
@@ -86,8 +86,8 @@ const categoryData = {
     ]
   },
   motorcycles: {
-    title: "Motorcycles",
-    description: "Premium two-wheel excellence for the distinguished rider.",
+    title: "Motocicletas",
+    description: "Excelencia sobre dos ruedas para el motociclista distinguido.",
     vehicles: [
       {
         id: 7,
@@ -110,8 +110,8 @@ const categoryData = {
     ]
   },
   aviation: {
-    title: "Aviation",
-    description: "Luxury takes flight with our exclusive collection of private aircraft.",
+    title: "Aviación",
+    description: "El lujo toma vuelo con nuestra exclusiva colección de aeronaves privadas.",
     vehicles: [
       {
         id: 8,
@@ -143,8 +143,8 @@ export function generateStaticParams() {
 
 export default function CategoryPage({ params }: { params: { category: string } }) {
   const data = categoryData[params.category as keyof typeof categoryData] || {
-    title: "Category Not Found",
-    description: "This category does not exist.",
+    title: "Categoría No Encontrada",
+    description: "Esta categoría no existe.",
     vehicles: []
   }
 

@@ -11,36 +11,36 @@ import {
 
 const featuredCategories = [
   {
-    title: "Luxury Collection",
-    description: "Discover ultimate comfort",
+    title: "Colección de Lujo",
+    description: "Descubre el confort supremo",
     href: "/inventory/luxury",
     image:
-      "https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "/images/RR.webp",
   },
   {
-    title: "Sports Cars",
-    description: "Pure performance",
+    title: "Coches Deportivos",
+    description: "Pura potencia",
     href: "/inventory/sports",
     image:
       "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Classic Collection",
-    description: "Timeless elegance",
+    title: "Colección Clásica",
+    description: "Elegancia atemporal",
     href: "/inventory/classic",
     image:
-      "https://images.unsplash.com/photo-1566024287286-457247b70310?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "/images/Classic1.webp",
   },
   {
-    title: "Formula 1",
-    description: "Racing excellence",
+    title: "Fórmula 1",
+    description: "Excelencia en carreras",
     href: "/inventory/formula-one",
     image:
-      "https://images.unsplash.com/photo-1515036551567-bf1198cccc35?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "/images/F1.webp",
   },
   {
-    title: "Motorcycles",
-    description: "Two-wheel luxury",
+    title: "Motocicletas",
+    description: "Lujo sobre dos ruedas",
     href: "/inventory/motorcycles",
     image:
       "https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
@@ -52,7 +52,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
       <main className="flex-1">
-        {/* Hero Section */}
+        {/* Sección Hero */}
         <section className="relative">
           <div
             className="absolute top-0 left-0 w-full h-full align-center z-0"
@@ -70,39 +70,38 @@ export default function Home() {
           <div className="container relative z-10 mx-auto px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
             <div className="max-w-3xl">
               <h1 className="text-3xl font-extrabold text-white sm:text-5xl">
-                Experience Unparalleled
+                Experimenta una
                 <strong className="block font-extrabold text-primary">
-                  Automotive Excellence
+                  Excelencia Automotriz Inigualable
                 </strong>
               </h1>
 
               <p className="mt-4 max-w-xl sm:text-xl/relaxed text-gray-300">
-                Discover our curated collection of the world's finest luxury
-                vehicles. Where performance meets sophistication.
+                Descubre nuestra colección seleccionada de los mejores vehículos de lujo del mundo. Donde el rendimiento se une con la sofisticación.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button size="lg" asChild>
-                  <Link href="/inventory">Explore Our Collection</Link>
+                  <Link href="/inventory">Explorar Colección</Link>
                 </Button>
 
                 <Button variant="outline" size="lg" asChild>
-                  <Link href="/contact">Book a Private Viewing</Link>
+                  <Link href="/contact">Reservar una Visita Privada</Link>
                 </Button>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Featured Categories Carousel */}
+        {/* Carrusel de Categorías Destacadas */}
         <section className="flex items-center justify-center bg-muted py-16">
           <div className="container">
             <div className="mx-auto max-w-2xl text-center mb-12">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                Featured Categories
+                Categorías Destacadas
               </h2>
               <p className="mt-2 text-lg text-muted-foreground">
-                Explore our exclusive vehicle collections
+                Explora nuestras exclusivas colecciones de vehículos
               </p>
             </div>
 
@@ -146,15 +145,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Featured Vehicles Section */}
+        {/* Sección de Vehículos Destacados */}
         <section className="bg-background py-24 sm:py-32 flex items-center justify-center">
           <div className="container">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                Featured Vehicles
+                Vehículos Destacados
               </h2>
               <p className="mt-2 text-lg text-muted-foreground">
-                Explore our latest additions to our exceptional collection
+                Explora nuestras últimas incorporaciones a nuestra colección excepcional
               </p>
             </div>
 
@@ -176,7 +175,7 @@ export default function Home() {
                     €320,000
                   </p>
                   <Button asChild>
-                    <Link href="/vehicle/1">View Details</Link>
+                    <Link href="/vehicle/1">Ver Detalles</Link>
                   </Button>
                 </div>
               </div>
@@ -198,7 +197,7 @@ export default function Home() {
                     €500,000
                   </p>
                   <Button asChild>
-                    <Link href="/vehicle/2">View Details</Link>
+                    <Link href="/vehicle/2">Ver Detalles</Link>
                   </Button>
                 </div>
               </div>
@@ -207,7 +206,7 @@ export default function Home() {
               <div className="group relative overflow-hidden rounded-lg">
                 <div className="aspect-[16/9]">
                   <img
-                    src="https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    src="/images/RR.webp"
                     alt="Rolls-Royce"
                     className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                   />
@@ -220,7 +219,7 @@ export default function Home() {
                     €450,000
                   </p>
                   <Button asChild>
-                    <Link href="/vehicle/3">View Details</Link>
+                    <Link href="/vehicle/3">Ver Detalles</Link>
                   </Button>
                 </div>
               </div>
