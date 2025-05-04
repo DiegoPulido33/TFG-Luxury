@@ -23,7 +23,7 @@ export function CategoryContent({ data }: CategoryContentProps) {
       <main className="flex-1">
         <section className="container py-24">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">{data.title}</h1>
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl mb-2">{data.title}</h1>
             <p className="text-lg text-muted-foreground">
               {data.description}
             </p>

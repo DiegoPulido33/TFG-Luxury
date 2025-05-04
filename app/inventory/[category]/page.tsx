@@ -6,19 +6,19 @@ const categoryData = {
     description: "Experimenta un confort y sofisticación incomparables con nuestros vehículos de lujo premium.",
     vehicles: [
       {
-        id: 1,
+        id: 101,
         name: "Rolls-Royce Phantom",
         price: "€450,000",
         image: "/images/RR.webp",
       },
       {
-        id: 2,
+        id: 102,
         name: "Bentley Flying Spur",
         price: "€320,000",
         image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       },
       {
-        id: 9,
+        id: 103,
         name: "Maybach S-Class",
         price: "€380,000",
         image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
@@ -30,19 +30,19 @@ const categoryData = {
     description: "Descubre nuestra colección de coches deportivos de alto rendimiento creados para la máxima experiencia de conducción.",
     vehicles: [
       {
-        id: 3,
+        id: 201,
         name: "Ferrari SF90 Stradale",
         price: "€500,000",
         image: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       },
       {
-        id: 4,
+        id: 202,
         name: "Lamborghini Huracán",
         price: "€280,000",
         image: "https://images.unsplash.com/photo-1566473965997-3de9c817e938?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       },
       {
-        id: 10,
+        id: 203,
         name: "McLaren 720S",
         price: "€315,000",
         image: "https://images.unsplash.com/photo-1621202432974-5e3aac3f5f10?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
@@ -54,16 +54,16 @@ const categoryData = {
     description: "Experimenta la cúspide de la ingeniería automotriz con nuestra exclusiva colección de Fórmula 1.",
     vehicles: [
       {
-        id: 5,
+        id: 301,
         name: "Mercedes-AMG F1 W12",
         price: "A consultar",
-        image: "https://images.unsplash.com/photo-1515036551567-bf1198cccc35?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        image: "/images/f1_mercedes.webp",
       },
       {
-        id: 11,
+        id: 302,
         name: "Red Bull RB16B",
         price: "A consultar",
-        image: "https://images.unsplash.com/photo-1514063364521-a61a3cf3a2de?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        image: "/images/f1_rb.webp",
       }
     ]
   },
@@ -72,13 +72,13 @@ const categoryData = {
     description: "Obras maestras atemporales que representan la época dorada del automovilismo.",
     vehicles: [
       {
-        id: 6,
+        id: 401,
         name: "Mercedes-Benz 300SL Gullwing",
         price: "€1,800,000",
         image: "https://images.unsplash.com/photo-1566024287286-457247b70310?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       },
       {
-        id: 12,
+        id: 402,
         name: "Ferrari 250 GTO",
         price: "€45,000,000",
         image: "https://images.unsplash.com/photo-1612911912304-5c585d289294?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
@@ -90,19 +90,19 @@ const categoryData = {
     description: "Excelencia sobre dos ruedas para el motociclista distinguido.",
     vehicles: [
       {
-        id: 7,
+        id: 501,
         name: "Ducati Panigale V4",
         price: "€28,000",
         image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       },
       {
-        id: 13,
+        id: 502,
         name: "BMW M 1000 RR",
         price: "€32,000",
         image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       },
       {
-        id: 14,
+        id: 503,
         name: "MV Agusta F4",
         price: "€25,000",
         image: "https://images.unsplash.com/photo-1609630875289-22852fa678ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
@@ -114,19 +114,19 @@ const categoryData = {
     description: "El lujo toma vuelo con nuestra exclusiva colección de aeronaves privadas.",
     vehicles: [
       {
-        id: 8,
+        id: 601,
         name: "Gulfstream G650",
         price: "€54,500,000",
         image: "https://images.unsplash.com/photo-1540962351504-03099e0a754b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       },
       {
-        id: 15,
+        id: 602,
         name: "Bombardier Global 7500",
         price: "€72,000,000",
         image: "https://images.unsplash.com/photo-1474302770737-173ee21bab63?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       },
       {
-        id: 16,
+        id: 603,
         name: "Embraer Praetor 600",
         price: "€21,000,000",
         image: "https://images.unsplash.com/photo-1559686043-e65d6d6c0e3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
@@ -148,5 +148,9 @@ export default function CategoryPage({ params }: { params: { category: string } 
     vehicles: []
   }
 
-  return <CategoryContent data={data} />
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center">
+      <CategoryContent data={data} />
+    </div>
+  )
 }

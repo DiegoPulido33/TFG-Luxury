@@ -19,7 +19,7 @@ const categories = [
   {
     title: "Fórmula 1",
     href: "/inventory/formula-one",
-    image: "/images/F1.webp",
+    image: "/images/f1_renault.webp",
     description: "Experimenta la cúspide de la ingeniería del automovilismo"
   },
   {

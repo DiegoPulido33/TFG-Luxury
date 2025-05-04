@@ -36,7 +36,7 @@ const featuredCategories = [
     description: "Excelencia en carreras",
     href: "/inventory/formula-one",
     image:
-      "/images/F1.webp",
+      "/images/f1_renault.webp",
   },
   {
     title: "Motocicletas",

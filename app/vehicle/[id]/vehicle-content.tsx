@@ -11,6 +11,15 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator
+} from "@/components/ui/breadcrumb"
+
 interface VehicleContentProps {
   vehicle: {
     id: string
@@ -27,6 +36,23 @@ export function VehicleContent({ vehicle }: VehicleContentProps) {
   return (
     <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
+      <div className="w-full max-w-6xl mt-8 px-4">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Inicio</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/inventory">Vehículos</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{vehicle.name}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       <main className="flex-1 w-full">
         <div className="container py-24">
           <div className="mb-12">
@@ -61,7 +87,7 @@ export function VehicleContent({ vehicle }: VehicleContentProps) {
                   <Link href={`/purchase/${vehicle.id}`}>Comprar</Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <Link href={`/rent/${vehicle.id}`}>Rentar</Link>
+                  <Link href={`/rent/${vehicle.id}`}>Alquilar</Link>
                 </Button>
               </div>
             </div>
