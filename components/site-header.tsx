@@ -12,9 +12,9 @@ import { usePathname } from "next/navigation"
 
 const navigation = [
   { name: 'Inventario', href: '/inventory' },
-  { name: 'Servicios', href: '/services' },
+  { name: 'Servicios', href: '/servicios' },
   { name: 'Sobre Nosotros', href: '/about' },
-  { name: 'Contacto', href: '/contact' },
+  
 ]
 
 export function SiteHeader() {
@@ -80,7 +80,7 @@ export function SiteHeader() {
         {/* Right side button */}
         <div className="flex flex-1 items-center justify-end space-x-2">
           <Button asChild>
-            <Link href="/contact">Schedule Viewing</Link>
+            <Link href="/contact">Contacto</Link>
           </Button>
         </div>
       </div>
