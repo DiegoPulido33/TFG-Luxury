@@ -6,9 +6,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Luxury Motors | Exclusive Car Dealership',
-  description: 'Experience luxury and excellence in automotive craftsmanship',
+  title: 'Luxury Motors',
+  description: 'Luxury Motors - Tu concesionario de coches de lujo',
+  keywords: 'coches de lujo, concesionario, coches deportivos, coches de alta gama',
 };
+
 
 export default function RootLayout({
   children,
@@ -21,7 +23,6 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
           disableTransitionOnChange
         >
           {children}
