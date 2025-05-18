@@ -19,8 +19,8 @@ export const vehicleData = {
     },
     images: [
       "/images/RR.webp",
-      "https://images.unsplash.com/photo-1635770310392-f1ae37e0a5b6",
-      "https://images.unsplash.com/photo-1635776062127-d379bfcba9f8",
+    
+      
     ],
   },
   "102": {
@@ -106,7 +106,7 @@ export const vehicleData = {
       drivetrain: "RWD",
       interior: "Minimalismo orientado al piloto",
     },
-    images: ["https://images.unsplash.com/photo-1621202432974-5e3aac3f5f10"],
+    images: ["/images/mc-720S.webp",""],
   },
   "301": {
     id: "301",

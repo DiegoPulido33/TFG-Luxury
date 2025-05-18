@@ -45,7 +45,7 @@ const categoryData = {
         id: 203,
         name: "McLaren 720S",
         price: "€315,000",
-        image: "https://images.unsplash.com/photo-1621202432974-5e3aac3f5f10?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        image: "/images/mc-720S.webp",
       },
     ]
   },
