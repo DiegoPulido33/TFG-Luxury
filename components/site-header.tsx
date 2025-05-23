@@ -5,7 +5,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
-import { Gauge } from "lucide-react";
+import { Gauge, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const navigation = [
   { name: "Inventario", href: "/inventory" },
@@ -15,13 +16,16 @@ const navigation = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-muted bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Desktop logo and nav */}
-        <div className="mr-4 hidden md:flex items-center space-x-6">
+        {/* Logo */}
+        <div className="flex items-center space-x-4 md:space-x-8">
           <Link href="/" className="group flex items-center space-x-2">
+            {/* Aquí puedes añadir las banderas cruzadas si tienes una imagen */}
+            {/* <Image src="/images/banderas.png" alt="Banderas" width={24} height={24} /> */}
             <Image
               src="/images/logoBueno.webp"
               alt="Luxury Motors Logo"
@@ -30,34 +34,61 @@ export function SiteHeader() {
               className="transition-transform duration-300 group-hover:translate-x-1 object-contain"
             />
           </Link>
+        </div>
+
+        {/* Desktop nav + Contact + Theme toggle */}
+        <div className="hidden md:flex items-center space-x-6">
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`
-                  relative inline-block overflow-hidden rounded-md px-3 py-2 transition-colors duration-300
-                  text-foreground/60 group
-                  ${pathname === item.href ? "text-white" : ""}
+                className={`relative inline-block overflow-hidden rounded-md px-3 py-2 transition-colors duration-300 group
+                  ${
+                    pathname === item.href
+                      ? "text-primary font-semibold"
+                      : "text-foreground/80"
+                  }
                 `}
               >
-                <span
-                  className="relative z-10 transition-colors duration-300 group-hover:text-black"
-                >
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
                   {item.name}
                 </span>
-                <span
-                  className={`
-                    absolute left-0 top-0 h-[200%] w-0 bg-[#D4AF37] z-0 rounded-md
-                    transition-all duration-300 ease-out group-hover:w-full
-                  `}
-                />
+                <span className="absolute left-0 top-0 h-[200%] w-0 bg-[#D4AF37] z-0 rounded-md transition-all duration-300 ease-out group-hover:w-full" />
               </Link>
             ))}
           </nav>
+
+          {/* Contact Button */}
+          <Button
+            asChild
+            className="relative inline-flex items-center justify-center overflow-hidden rounded-md px-6 py-2 border border-foreground bg-transparent group"
+          >
+            <Link href="/contact">
+              <span className="relative z-10 text-black dark:text-white transition-colors duration-300 group-hover:text-black">
+                Contacto
+              </span>
+              <span className="absolute left-0 top-0 h-[200%] w-0 bg-[#D4AF37] z-0 rounded-md transition-all duration-300 ease-out group-hover:w-full" />
+            </Link>
+          </Button>
+
+          {/* Theme Toggle */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="hover:bg-transparent"
+          >
+            {theme === "dark" ? (
+              <Sun className="h-5 w-5 text-yellow-400" />
+            ) : (
+              <Moon className="h-5 w-5 text-gray-800" />
+            )}
+            <span className="sr-only">Cambiar tema</span>
+          </Button>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile Menu */}
         <Sheet>
           <SheetTrigger asChild>
             <Button
@@ -71,7 +102,6 @@ export function SiteHeader() {
             side="left"
             className="flex flex-col items-center gap-6 px-6 pt-8"
           >
-            {/* Mobile logo */}
             <Link href="/" className="flex items-center justify-center">
               <Image
                 alt="Luxury Motors Logo"
@@ -82,55 +112,26 @@ export function SiteHeader() {
               />
             </Link>
 
-            {/* Mobile nav */}
             <nav className="mt-8 flex w-full flex-col space-y-3">
               {navigation.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`
-                    relative mx-2 inline-block overflow-hidden rounded-md px-4 py-3 text-center
-                    text-base font-medium text-foreground/60 group
-                    ${pathname === item.href ? "text-white" : ""}
-                  `}
+                  className={`relative mx-2 inline-block overflow-hidden rounded-md px-4 py-3 text-center text-base font-medium group ${
+                    pathname === item.href
+                      ? "text-primary font-bold"
+                      : "text-foreground/80"
+                  }`}
                 >
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
                     {item.name}
                   </span>
-                  <span
-                    className={`
-                      absolute left-0 top-0 h-[200%] w-0 bg-[#D4AF37] z-0 rounded-md
-                      transition-all duration-300 ease-out group-hover:w-full
-                    `}
-                  />
+                  <span className="absolute left-0 top-0 h-[200%] w-0 bg-[#D4AF37] z-0 rounded-md transition-all duration-300 ease-out group-hover:w-full" />
                 </Link>
               ))}
             </nav>
           </SheetContent>
         </Sheet>
-
-        {/* Contact Button */}
-        <div className="flex flex-1 items-center justify-end space-x-2">
-          <Button
-            asChild
-            className={`
-              relative inline-flex items-center justify-center overflow-hidden rounded-md px-6 py-2
-              text-white bg-transparent border border-white group
-            `}
-          >
-            <Link href="/contact">
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
-                Contacto
-              </span>
-              <span
-                className={`
-                  absolute left-0 top-0 h-[200%] w-0 bg-[#D4AF37] z-0 rounded-md
-                  transition-all duration-300 ease-out group-hover:w-full
-                `}
-              />
-            </Link>
-          </Button>
-        </div>
       </div>
     </header>
   );
