@@ -13,37 +13,44 @@ const featuredCategories = [
   {
     title: "Colección de Lujo",
     description: "Descubre el confort supremo",
-    href: "/inventory/luxury",
+    href: "/inventory/Luxury",
     image:
       "/images/RR.webp",
   },
   {
     title: "Coches Deportivos",
     description: "Pura potencia",
-    href: "/inventory/sports",
+    href: "/inventory/Sports",
     image:
       "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
   },
   {
     title: "Colección Clásica",
     description: "Elegancia atemporal",
-    href: "/inventory/classic",
+    href: "/inventory/Classic",
     image:
       "/images/Classic1.webp",
   },
   {
     title: "Fórmula 1",
     description: "Excelencia en carreras",
-    href: "/inventory/formula-one",
+    href: "/inventory/Formula-one",
     image:
       "/images/f1_renault.webp",
   },
   {
     title: "Motocicletas",
     description: "Lujo sobre dos ruedas",
-    href: "/inventory/motorcycles",
+    href: "/inventory/Motorcycles",
     image:
       "https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Jets",
+    description: "Lujo en el aire",
+    href: "/inventory/Jets",
+    image:
+      "/images/Embraer.webp",
   },
 ];
 
@@ -175,7 +182,7 @@ export default function Home() {
                     €320,000
                   </p>
                   <Button asChild>
-                    <Link href="/vehicle/1">Ver Detalles</Link>
+                    <Link href="/vehicle/102">Ver Detalles</Link>
                   </Button>
                 </div>
               </div>
@@ -197,7 +204,7 @@ export default function Home() {
                     €500,000
                   </p>
                   <Button asChild>
-                    <Link href="/vehicle/2">Ver Detalles</Link>
+                    <Link href="/vehicle/201">Ver Detalles</Link>
                   </Button>
                 </div>
               </div>
@@ -219,7 +226,7 @@ export default function Home() {
                     €450,000
                   </p>
                   <Button asChild>
-                    <Link href="/vehicle/3">Ver Detalles</Link>
+                    <Link href="/vehicle/101">Ver Detalles</Link>
                   </Button>
                 </div>
               </div>
