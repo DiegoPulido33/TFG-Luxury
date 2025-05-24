@@ -6,37 +6,37 @@ import Link from "next/link"
 const categories = [
   {
     title: "Coches de Lujo",
-    href: "/inventory/luxury",
+    href: "/inventory/Luxury",
     image: "/images/RR.webp",
     description: "Experimenta un confort y sofisticación incomparables"
   },
   {
     title: "Coches Deportivos",
-    href: "/inventory/sports",
+    href: "/inventory/Sports",
     image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     description: "Puro rendimiento y excelencia en conducción"
   },
   {
     title: "Fórmula 1",
-    href: "/inventory/formula-one",
+    href: "/inventory/Formula-one",
     image: "/images/f1_renault.webp",
     description: "Experimenta la cúspide de la ingeniería del automovilismo"
   },
   {
     title: "Colección Clásica",
-    href: "/inventory/classic",
+    href: "/inventory/Classic",
     image: "/images/Classic1.webp",
     description: "Obras maestras automotrices atemporales"
   },
   {
     title: "Motocicletas",
-    href: "/inventory/motorcycles",
+    href: "/inventory/Motorcycles",
     image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     description: "Excelencia premium sobre dos ruedas"
   },
   {
     title: "Aviación",
-    href: "/inventory/aviation",
+    href: "/inventory/Jets",
     image: "https://images.unsplash.com/photo-1540962351504-03099e0a754b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     description: "El lujo toma vuelo"
   }

@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { SiteHeader } from "@/components/site-header"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { SiteHeader } from "@/components/site-header";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
 
 import {
   Breadcrumb,
@@ -17,19 +17,20 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbPage,
-  BreadcrumbSeparator
-} from "@/components/ui/breadcrumb"
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 interface VehicleContentProps {
   vehicle: {
-    id: string
-    name: string
-    price: string
-    rentPrice: string
-    description: string
-    specs: Record<string, string>
-    images: string[]
-  }
+    id: string;
+    name: string;
+    price: string;
+    rentPrice: string;
+    description: string;
+    specs: Record<string, string>;
+    images: string[];
+    category: string; // Asegúrate de que esta propiedad esté presente
+  };
 }
 
 export function VehicleContent({ vehicle }: VehicleContentProps) {
@@ -44,7 +45,14 @@ export function VehicleContent({ vehicle }: VehicleContentProps) {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/inventory">Vehículos</BreadcrumbLink>
+              <BreadcrumbLink href="/inventory">Vehículo  </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href={`/inventory/${vehicle.category}`}>
+                {vehicle.category.charAt(0).toUpperCase() +
+                  vehicle.category.slice(1)}
+              </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
@@ -78,9 +86,15 @@ export function VehicleContent({ vehicle }: VehicleContentProps) {
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-4">
               <div>
-                <h1 className="text-4xl font-bold mb-2 text-center md:text-left">{vehicle.name}</h1>
-                <p className="text-3xl font-bold text-primary mb-1 text-center md:text-left">{vehicle.price}</p>
-                <p className="text-lg text-muted-foreground text-center md:text-left">Renta: {vehicle.rentPrice}</p>
+                <h1 className="text-4xl font-bold mb-2 text-center md:text-left">
+                  {vehicle.name}
+                </h1>
+                <p className="text-3xl font-bold text-primary mb-1 text-center md:text-left">
+                  {vehicle.price}
+                </p>
+                <p className="text-lg text-muted-foreground text-center md:text-left">
+                  Renta: {vehicle.rentPrice}
+                </p>
               </div>
               <div className="flex gap-4 justify-center md:justify-start">
                 <Button size="lg" asChild>
@@ -97,11 +111,15 @@ export function VehicleContent({ vehicle }: VehicleContentProps) {
             </div>
 
             <div className="bg-muted rounded-lg p-8">
-              <h2 className="text-2xl font-bold mb-6 text-center md:text-left">Especificaciones</h2>
+              <h2 className="text-2xl font-bold mb-6 text-center md:text-left">
+                Especificaciones
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {Object.entries(vehicle.specs).map(([key, value]) => (
                   <div key={key} className="flex flex-col">
-                    <span className="text-sm text-muted-foreground capitalize">{key}</span>
+                    <span className="text-sm text-muted-foreground capitalize">
+                      {key}
+                    </span>
                     <span className="text-lg font-medium">{value}</span>
                   </div>
                 ))}
@@ -111,5 +129,5 @@ export function VehicleContent({ vehicle }: VehicleContentProps) {
         </div>
       </main>
     </div>
-  )
+  );
 }
