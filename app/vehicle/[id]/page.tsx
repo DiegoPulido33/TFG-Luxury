@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { VehicleContent } from "./vehicle-content";
 
-import { vehicleData } from "@/data/vehicleData"; // Asegúrate de que la ruta sea correcta
+import { vehicleData } from "@/data/vehicleData"; 
 
 export function generateStaticParams() {
   return Object.keys(vehicleData).map((id) => ({

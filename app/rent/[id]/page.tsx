@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { vehicleData } from "@/app/vehicle/[id]/page"
+import { vehicleData } from "@/data/vehicleData"
 
 export default function RentPage({ params }: { params: { id: string } }) {
   const router = useRouter()
