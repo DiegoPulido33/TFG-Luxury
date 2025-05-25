@@ -1,22 +1,27 @@
-import { vehicleData } from "../data/vehicleData";
-import clientPromise from "../lib/mongodb";
+// import mongoose from "mongoose";
+// import Vehicle from "../models/Vehicle";
+// // import { vehicleData } from "../data/vehicleData";
 
-import dotenv from 'dotenv';
-dotenv.config({ path: '.env.local' });
+// import * as dotenv from 'dotenv';
+// dotenv.config();
 
-async function seed() {
-  const client = await clientPromise;
-  const db = client.db("LuxuryMotors");
-  const collection = db.collection("vehicles");
 
-  await collection.deleteMany({});
-  await collection.insertMany(Object.values(vehicleData));
+// async function seed() {
+//   try {
+//     await mongoose.connect(process.env.MONGODB_URI!);
+//     console.log("Connected to DB");
 
-  console.log("🚗 Vehículos insertados con éxito");
-  process.exit(0);
-}
+//     // const vehicles = Object.values(vehicleData);
 
-seed().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+//     await Vehicle.deleteMany({});
+//     await Vehicle.insertMany(vehicles);
+
+//     console.log("Seed data inserted");
+//     process.exit(0);
+//   } catch (error) {
+//     console.error(error);
+//     process.exit(1);
+//   }
+// }
+
+// seed();
