@@ -4,7 +4,7 @@ import { VehicleContent } from "./vehicle-content";
 type Params = { params: { id: string } };
 
 async function getVehicle(id: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ;
   const res = await fetch(`${baseUrl}/api/vehicles/${id}`, {
     cache: "no-store",
   });
@@ -13,7 +13,7 @@ async function getVehicle(id: string) {
 }
 
 export async function generateStaticParams() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const res = await fetch(`${baseUrl}/api/vehicles`);
   const vehicles = await res.json();
 
