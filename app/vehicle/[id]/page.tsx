@@ -1,23 +1,23 @@
 import { notFound } from "next/navigation";
 import { VehicleContent } from "./vehicle-content";
+import connectToDatabase from "@/lib/mongodb";
+import Vehicle from "@/models/Vehicle";
 
 type Params = { params: { id: string } };
 
 async function getVehicle(id: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ;
-  const res = await fetch(`${baseUrl}/api/vehicles/${id}`, {
-    cache: "no-store",
-  });
-  if (!res.ok) return null;
-  return res.json();
+  await connectToDatabase();
+  const vehicle = await Vehicle.findOne({ id }).lean();
+  return vehicle;
 }
 
-export async function generateStaticParams() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const res = await fetch(`${baseUrl}/api/vehicles`);
-  const vehicles = await res.json();
 
-  return vehicles.map((v: { id: string }) => ({
+export async function generateStaticParams() {
+  await connectToDatabase();
+
+  const vehicles = await Vehicle.find({}, "id").lean();
+
+  return vehicles.map((v: any) => ({
     id: v.id,
   }));
 }
