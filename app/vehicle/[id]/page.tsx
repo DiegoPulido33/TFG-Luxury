@@ -11,16 +11,20 @@ async function getVehicle(id: string) {
   return vehicle;
 }
 
-
 export async function generateStaticParams() {
-  await connectToDatabase();
+  try {
+    await connectToDatabase();
+    const vehicles = await Vehicle.find({}, "id").lean();
 
-  const vehicles = await Vehicle.find({}, "id").lean();
-
-  return vehicles.map((v: any) => ({
-    id: v.id,
-  }));
+    return vehicles.map((v: any) => ({
+      id: v.id,
+    }));
+  } catch (err) {
+    console.error("Error generando static params:", err);
+    return [];
+  }
 }
+
 export default async function VehiclePage({ params }: Params) {
   const vehicle = await getVehicle(params.id);
 
