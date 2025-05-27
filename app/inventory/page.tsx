@@ -14,7 +14,7 @@ const categories = [
     title: "Coches Deportivos",
     href: "/inventory/Sports",
     image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    description: "Puro rendimiento y excelencia en conducción"
+    description: "Puro rendimiento y excelencia en la conducción"
   },
   {
     title: "Fórmula 1",

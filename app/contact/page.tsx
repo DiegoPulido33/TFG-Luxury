@@ -52,15 +52,16 @@ export default function ContactPage() {
           <div className="mx-auto max-w-3xl">
             <Card>
               <CardHeader>
-                <CardTitle>Contact Us</CardTitle>
+                <CardTitle>Contáctanos</CardTitle>
                 <CardDescription>
-                  Get in touch with our luxury vehicle specialists
+                  Ponte en contacto con nuestros especialistas para cualquier consulta o solicitud de información. 
+
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
+                    <Label htmlFor="name">Nombre Completo</Label>
                     <Input
                       id="name"
                       name="name"
@@ -71,7 +72,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">Correo</Label>
                     <Input
                       id="email"
                       name="email"
@@ -83,7 +84,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
+                    <Label htmlFor="phone">Teléfono</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -94,7 +95,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
+                    <Label htmlFor="subject">Asunto</Label>
                     <Input
                       id="subject"
                       name="subject"
@@ -105,7 +106,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
+                    <Label htmlFor="message">Mensaje</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -117,7 +118,7 @@ export default function ContactPage() {
                   </div>
 
                   <Button type="submit" className="w-full">
-                    Send Message
+                    Enviar
                   </Button>
                 </form>
               </CardContent>

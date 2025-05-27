@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import ClientThemeProvider from "@/components/ClientThemeProvider";
+import { Footer } from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ClientThemeProvider>
-          <div className="flex min-h-screen flex-col">{children}</div>
+          <div className="flex min-h-screen flex-col">{children}
+            <Footer />
+          </div>
         </ClientThemeProvider>
       </body>
     </html>

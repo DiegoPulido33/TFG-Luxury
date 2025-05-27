@@ -36,7 +36,6 @@ const VehicleSchema: Schema = new Schema({
   category: String,
 });
 
-// Evitar recompilar el modelo en hot reload de Next.js
 const Vehicle: Model<IVehicle> = mongoose.models.Vehicle || mongoose.model("Vehicle", VehicleSchema);
 
 export default Vehicle;

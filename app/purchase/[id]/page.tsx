@@ -74,16 +74,16 @@ export default function PurchasePage({ params }: { params: { id: string } }) {
 
           <Card className="w-full max-w-4xl mx-auto">
             <CardHeader>
-              <CardTitle>Purchase {vehicle.name}</CardTitle>
+              <CardTitle>Comprar {vehicle.name}</CardTitle>
               <CardDescription>
-                Please fill in your details to proceed with the purchase
+                Por favor completa el formulario para proceder con la compra.
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
+                    <Label htmlFor="firstName">Nombre</Label>
                     <Input
                       id="firstName"
                       name="firstName"
@@ -94,7 +94,7 @@ export default function PurchasePage({ params }: { params: { id: string } }) {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
+                    <Label htmlFor="lastName">Apellidos</Label>
                     <Input
                       id="lastName"
                       name="lastName"
@@ -107,7 +107,7 @@ export default function PurchasePage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">Correo</Label>
                   <Input
                     id="email"
                     name="email"
@@ -120,7 +120,7 @@ export default function PurchasePage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
+                  <Label htmlFor="phone">Teléfono</Label>
                   <Input
                     id="phone"
                     name="phone"
@@ -133,7 +133,7 @@ export default function PurchasePage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="address">Address</Label>
+                  <Label htmlFor="address">Dirección</Label>
                   <Input
                     id="address"
                     name="address"
@@ -146,7 +146,7 @@ export default function PurchasePage({ params }: { params: { id: string } }) {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="city">City</Label>
+                    <Label htmlFor="city">Ciudad</Label>
                     <Input
                       id="city"
                       name="city"
@@ -157,7 +157,7 @@ export default function PurchasePage({ params }: { params: { id: string } }) {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="country">Country</Label>
+                    <Label htmlFor="country">Provincia</Label>
                     <Input
                       id="country"
                       name="country"
@@ -170,7 +170,7 @@ export default function PurchasePage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="postalCode">Postal Code</Label>
+                  <Label htmlFor="postalCode">Código Postal</Label>
                   <Input
                     id="postalCode"
                     name="postalCode"

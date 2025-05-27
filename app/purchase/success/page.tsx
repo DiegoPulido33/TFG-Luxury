@@ -9,12 +9,12 @@ export default function PurchaseSuccessPage() {
       <main className="flex-1">
         <div className="container py-24">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold mb-4">Thank You for Your Purchase!</h1>
+            <h1 className="text-4xl font-bold mb-4">¡Gracias por su compra!</h1>
             <p className="text-lg text-muted-foreground mb-8">
-              We have received your purchase request. Our team will contact you shortly to finalize the details.
+              Hemos recibido su solicitud de compra. Nuestro equipo se pondrá en contacto contigo para ultimar algunos detalles.
             </p>
             <Button asChild>
-              <Link href="/inventory">Browse More Vehicles</Link>
+              <Link href="/inventory">Ver más vehículos</Link>
             </Button>
           </div>
         </div>

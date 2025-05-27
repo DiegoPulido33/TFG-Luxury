@@ -71,13 +71,13 @@ const categoryData = {
       {
         id: 301,
         name: "Mercedes-AMG F1 W12",
-        price: "A consultar",
+        price: "€13,000,000",
         image: "/images/f1_mercedes.webp",
       },
       {
         id: 302,
         name: "Red Bull RB16B",
-        price: "A consultar",
+        price: "€14,000,000",
         image: "/images/f1_rb.webp",
       },
     ],

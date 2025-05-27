@@ -24,8 +24,6 @@ export function SiteHeader() {
         {/* Logo */}
         <div className="flex items-center space-x-4 md:space-x-8">
           <Link href="/" className="group flex items-center space-x-2">
-            {/* Aquí puedes añadir las banderas cruzadas si tienes una imagen */}
-            {/* <Image src="/images/banderas.png" alt="Banderas" width={24} height={24} /> */}
             <Image
               src="/images/logoBueno.webp"
               alt="Luxury Motors Logo"
@@ -36,20 +34,18 @@ export function SiteHeader() {
           </Link>
         </div>
 
-        {/* Desktop nav + Contact + Theme toggle */}
+        {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-6">
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative inline-block overflow-hidden rounded-md px-3 py-2 transition-colors duration-300 group
-                  ${
-                    pathname === item.href
-                      ? "text-primary font-semibold"
-                      : "text-foreground/80"
-                  }
-                `}
+                className={`relative inline-block overflow-hidden rounded-md px-3 py-2 transition-colors duration-300 group ${
+                  pathname === item.href
+                    ? "text-primary font-semibold"
+                    : "text-foreground/80"
+                }`}
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
                   {item.name}
@@ -119,7 +115,7 @@ export function SiteHeader() {
                   href={item.href}
                   className={`relative mx-2 inline-block overflow-hidden rounded-md px-4 py-3 text-center text-base font-medium group ${
                     pathname === item.href
-                      ? "text-primary font-bold"
+                      ? "text-primary font-semibold"
                       : "text-foreground/80"
                   }`}
                 >
@@ -129,6 +125,35 @@ export function SiteHeader() {
                   <span className="absolute left-0 top-0 h-[200%] w-0 bg-[#D4AF37] z-0 rounded-md transition-all duration-300 ease-out group-hover:w-full" />
                 </Link>
               ))}
+
+              <Link
+                href="/contact"
+                className={`relative mx-2 inline-block overflow-hidden rounded-md px-4 py-3 text-center text-base font-medium group ${
+                  pathname === "/contact"
+                    ? "text-primary font-semibold"
+                    : "text-foreground/80"
+                }`}
+              >
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
+                  Contacto
+                </span>
+                <span className="absolute left-0 top-0 h-[200%] w-0 bg-[#D4AF37] z-0 rounded-md transition-all duration-300 ease-out group-hover:w-full" />
+              </Link>
+
+              {/* Theme Toggle */}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="hover:bg-transparent"
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5 text-yellow-400" />
+                ) : (
+                  <Moon className="h-5 w-5 text-gray-800" />
+                )}
+                <span className="sr-only">Cambiar tema</span>
+              </Button>
             </nav>
           </SheetContent>
         </Sheet>

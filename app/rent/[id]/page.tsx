@@ -81,7 +81,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
+                    <Label htmlFor="firstName">Nombre</Label>
                     <Input
                       id="firstName"
                       name="firstName"
@@ -92,7 +92,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
+                    <Label htmlFor="lastName">Apellidos</Label>
                     <Input
                       id="lastName"
                       name="lastName"
@@ -105,7 +105,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">Correo</Label>
                   <Input
                     id="email"
                     name="email"
@@ -118,7 +118,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
+                  <Label htmlFor="phone">Teléfono</Label>
                   <Input
                     id="phone"
                     name="phone"
@@ -131,7 +131,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="licenseNumber">Driver's License Number</Label>
+                  <Label htmlFor="licenseNumber">Número de licencia de conducir</Label>
                   <Input
                     id="licenseNumber"
                     name="licenseNumber"
@@ -144,7 +144,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="startDate">Start Date</Label>
+                    <Label htmlFor="startDate">Inicio fecha</Label>
                     <Input
                       id="startDate"
                       name="startDate"
@@ -155,7 +155,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="endDate">End Date</Label>
+                    <Label htmlFor="endDate">Fin fecha</Label>
                     <Input
                       id="endDate"
                       name="endDate"
@@ -168,7 +168,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="deliveryAddress">Delivery Address</Label>
+                  <Label htmlFor="deliveryAddress">Dirección de entrega </Label>
                   <Input
                     id="deliveryAddress"
                     name="deliveryAddress"
@@ -180,7 +180,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="specialRequests">Special Requests</Label>
+                  <Label htmlFor="specialRequests">Solicitudes especiales</Label>
                   <Input
                     id="specialRequests"
                     name="specialRequests"

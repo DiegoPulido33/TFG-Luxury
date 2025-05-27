@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
 
 interface Vehicle {
   id: number
@@ -24,7 +25,8 @@ export function VehicleGrid({ vehicles }: VehicleGridProps) {
             <Card key={vehicle.id} className="group overflow-hidden mt-20">
               <CardHeader className="p-0">
                 <div className="aspect-[16/9] relative overflow-hidden">
-                  <img
+                  <Image
+                    fill
                     src={vehicle.image}
                     alt={vehicle.name}
                     className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
@@ -35,7 +37,7 @@ export function VehicleGrid({ vehicles }: VehicleGridProps) {
                 <CardTitle className="mb-2">{vehicle.name}</CardTitle>
                 <p className="text-2xl font-bold text-primary mb-4">{vehicle.price}</p>
                 <Button asChild>
-                  <Link href={`/vehicle/${vehicle.id}`}>View Details</Link>
+                  <Link href={`/vehicle/${vehicle.id}`}>Ver Detalles</Link>
                 </Button>
               </CardContent>
             </Card>

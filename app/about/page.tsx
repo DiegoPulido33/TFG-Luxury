@@ -2,6 +2,7 @@
 
 import { SiteHeader } from "@/components/site-header";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -24,8 +25,8 @@ export default function AboutPage() {
               </p>
             </motion.div>
 
-            {/* NUEVO DISEÑO CON 2/3 IMAGEN Y 1/3 TEXTO */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center mt-16">
+            {/* DISEÑO CON 2/3 IMAGEN Y 1/3 TEXTO */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center mt-16 p-4">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -52,7 +53,8 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="md:col-span-2 relative aspect-[16/9] overflow-hidden rounded-lg"
               >
-                <img
+                <Image
+                  fill
                   src="/images/about/about_hero.jpg"
                   alt="Showroom de lujo"
                   className="object-cover w-full h-full"
@@ -66,14 +68,16 @@ export default function AboutPage() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24"
             >
-              <div className="bg-card rounded-xl shadow-lg text-center p-6">
+              <div className="bg-card rounded-xl shadow-lg text-center p-6 group relative overflow-hidden rounded-lg border border-gray-200 dark:border-white/20 shadow-md dark:shadow-white/10 bg-card transition-all duration-300">
                 <h3 className="text-2xl font-bold mb-2">Experiencia</h3>
                 <p className="text-muted-foreground">
                   Nuestro equipo de especialistas aporta décadas de experiencia
                   en consultoría automotriz de lujo.
                 </p>
                 <div className="w-full h-80 mt-10 overflow-hidden rounded-lg">
-                  <img
+                  <Image
+                    width={800}
+                    height={600}
                     src="/images/about/experiencia.avif"
                     alt="Experiencia"
                     className="object-cover w-full h-full"
@@ -81,14 +85,16 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="bg-card rounded-xl shadow-lg text-center p-6">
+              <div className="bg-card rounded-xl shadow-lg text-center p-6 group relative overflow-hidden rounded-lg border border-gray-200 dark:border-white/20 shadow-md dark:shadow-white/10 bg-card transition-all duration-300">
                 <h3 className="text-2xl font-bold mb-2">Excelencia</h3>
                 <p className="text-muted-foreground">
                   Mantenemos los más altos estándares en la selección de
                   vehículos y atención al cliente.
                 </p>
                 <div className="w-full h-80 mt-10 overflow-hidden rounded-lg">
-                  <img
+                  <Image
+                    width={800}
+                    height={600}
                     src="/images/about/excelencia.avif"
                     alt="Excelencia"
                     className="object-cover w-full h-full"
@@ -96,14 +102,16 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="bg-card rounded-xl shadow-lg text-center p-6">
+              <div className="bg-card rounded-xl shadow-lg text-center p-6 group relative overflow-hidden rounded-lg border border-gray-200 dark:border-white/20 shadow-md dark:shadow-white/10 bg-card transition-all duration-300">
                 <h3 className="text-2xl font-bold mb-2">Innovación</h3>
                 <p className="text-muted-foreground">
                   Adoptamos las últimas tecnologías automotrices y tendencias de
                   lujo.
                 </p>
                 <div className="w-full h-80 mt-10 overflow-hidden rounded-lg">
-                  <img
+                  <Image
+                    width={800}
+                    height={600}
                     src="/images/about/innovacion.avif"
                     alt="Innovación"
                     className="object-cover w-full h-full"

@@ -4,8 +4,7 @@ import SibApiV3Sdk from "sib-api-v3-sdk"
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
-  "https://LuxuryMotors.com",
-  "https://www.LuxuryMotors.com",
+  "https://tfg-luxury-chi.vercel.app/",
 ]
 
 export default async function handler(req, res) {

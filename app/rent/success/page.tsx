@@ -9,12 +9,12 @@ export default function RentSuccessPage() {
       <main className="flex-1">
         <div className="container py-24">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold mb-4">Rental Request Confirmed!</h1>
+            <h1 className="text-4xl font-bold mb-4">!Solicitud de alquiler confirmada!</h1>
             <p className="text-lg text-muted-foreground mb-8">
-              We have received your rental request. Our team will contact you shortly to confirm the details and arrange delivery.
+             Hemos recibido su solicitud de alquiler. Nuestro equipo se pondrá en contacto con usted cuanto antes, para aclarar los detalles.
             </p>
             <Button asChild>
-              <Link href="/inventory">Browse More Vehicles</Link>
+              <Link href="/inventory">Ver más vehículos</Link>
             </Button>
           </div>
         </div>
