@@ -49,10 +49,22 @@ export default function RentPage({ params }: { params: { id: string } }) {
     return <div className="p-10 text-center">Cargando vehículo...</div>;
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Rental form submitted:", formData);
-    router.push("/rent/success");
+
+    try {
+      const res = await fetch("/api/rent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, vehicleName: vehicle.name }),
+      });
+
+      if (!res.ok) throw new Error("Error al enviar formulario");
+      router.push("/rent/success");
+    } catch (error) {
+      alert("Hubo un error al enviar el formulario.");
+      console.error(error);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -131,7 +143,9 @@ export default function RentPage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="licenseNumber">Número de licencia de conducir</Label>
+                  <Label htmlFor="licenseNumber">
+                    Número de licencia de conducir
+                  </Label>
                   <Input
                     id="licenseNumber"
                     name="licenseNumber"
@@ -180,7 +194,9 @@ export default function RentPage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="specialRequests">Solicitudes especiales</Label>
+                  <Label htmlFor="specialRequests">
+                    Solicitudes especiales
+                  </Label>
                   <Input
                     id="specialRequests"
                     name="specialRequests"

@@ -68,7 +68,7 @@ export default function AboutPage() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24"
             >
-              <div className="bg-card rounded-xl shadow-lg text-center p-6 group relative overflow-hidden rounded-lg border border-gray-200 dark:border-white/20 shadow-md dark:shadow-white/10 bg-card transition-all duration-300">
+              <div className="bg-card rounded-xl shadow-lg text-center p-6 group relative overflow-hidden border border-gray-200 dark:border-white/20 shadow-md dark:shadow-white/10 bg-card transition-all duration-300 hover:shadow-xl dark:hover:shadow-white/20">
                 <h3 className="text-2xl font-bold mb-2">Experiencia</h3>
                 <p className="text-muted-foreground">
                   Nuestro equipo de especialistas aporta décadas de experiencia
@@ -85,7 +85,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="bg-card rounded-xl shadow-lg text-center p-6 group relative overflow-hidden rounded-lg border border-gray-200 dark:border-white/20 shadow-md dark:shadow-white/10 bg-card transition-all duration-300">
+              <div className="bg-card rounded-xl shadow-lg text-center p-6 group relative overflow-hidden border border-gray-200 dark:border-white/20 shadow-md dark:shadow-white/10 bg-card transition-all duration-300 hover:shadow-xl dark:hover:shadow-white/20">
                 <h3 className="text-2xl font-bold mb-2">Excelencia</h3>
                 <p className="text-muted-foreground">
                   Mantenemos los más altos estándares en la selección de
@@ -102,7 +102,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="bg-card rounded-xl shadow-lg text-center p-6 group relative overflow-hidden rounded-lg border border-gray-200 dark:border-white/20 shadow-md dark:shadow-white/10 bg-card transition-all duration-300">
+              <div className="bg-card rounded-xl shadow-lg text-center p-6 group relative overflow-hidden border border-gray-200 dark:border-white/20 shadow-md dark:shadow-white/10 bg-card transition-all duration-300 hover:shadow-xl dark:hover:shadow-white/20">
                 <h3 className="text-2xl font-bold mb-2">Innovación</h3>
                 <p className="text-muted-foreground">
                   Adoptamos las últimas tecnologías automotrices y tendencias de

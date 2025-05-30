@@ -20,3 +20,11 @@ export default function NotFound() {
     </div>
   )
 }
+
+// MONGODB_URI="mongodb+srv://Puvero:luxurymotors33@luxury-motors.bzjgxvk.mongodb.net/?retryWrites=true&w=majority&appName=Luxury-Motors"
+// NEXT_PUBLIC_BASE_URL="https://tfg-luxury-chi.vercel.app"
+
+// BREVO_API_KEY="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"
+// # BREVO_FROM_EMAIL=info@luxurymotors.com
+// # BREVO_FROM_NAME=Luxury Motors
+// # BREVO_TO_EMAIL=info@luxurymotors.com

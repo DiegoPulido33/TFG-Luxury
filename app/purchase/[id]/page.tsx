@@ -49,10 +49,26 @@ export default function PurchasePage({ params }: { params: { id: string } }) {
     return <div className="p-10 text-center">Cargando vehículo...</div>;
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Purchase form submitted:", formData);
-    router.push("/purchase/success");
+
+    try {
+      const res = await fetch("/api/purchase", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          vehicleName: vehicle.name,
+          price: vehicle.price,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Error al enviar formulario");
+      router.push("/purchase/success");
+    } catch (error) {
+      alert("Hubo un error al enviar el formulario.");
+      console.error(error);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,10 +1,11 @@
+// CONECTAR A LA BASE DE DATOS Y SEMBRAR CON DATOS INICIALES
+
 // import mongoose from "mongoose";
 // import Vehicle from "../models/Vehicle";
 // // import { vehicleData } from "../data/vehicleData";
 
 // import * as dotenv from 'dotenv';
 // dotenv.config();
-
 
 // async function seed() {
 //   try {

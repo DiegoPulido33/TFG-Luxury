@@ -49,7 +49,7 @@ export function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-[#D4AF37]" />{" "}
-              info@luxurymotors.com
+              Info@luxurymotors.com
             </li>
           </ul>
         </div>

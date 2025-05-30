@@ -1,48 +1,75 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { SiteHeader } from "@/components/site-header"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { useToast } from "@/hooks/use-toast"
+import { useState } from "react";
+import { SiteHeader } from "@/components/site-header";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactPage() {
-  const { toast } = useToast()
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     subject: "",
-    message: ""
-  })
+    message: "",
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    toast({
-      title: "Message Sent",
-      description: "We'll get back to you as soon as possible.",
-    })
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: ""
-    })
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        throw new Error("Error al enviar el formulario");
+      }
+
+      toast({
+        title: "Mensaje enviado",
+        description: "Te responderemos lo antes posible.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Error",
+        description: "No se pudo enviar el mensaje. Intenta nuevamente.",
+        variant: "destructive",
+      });
+    }
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
+    const { name, value } = e.target;
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -54,8 +81,8 @@ export default function ContactPage() {
               <CardHeader>
                 <CardTitle>Contáctanos</CardTitle>
                 <CardDescription>
-                  Ponte en contacto con nuestros especialistas para cualquier consulta o solicitud de información. 
-
+                  Ponte en contacto con nuestros especialistas para cualquier
+                  consulta o solicitud de información.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -127,5 +154,5 @@ export default function ContactPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }
