@@ -1,10 +1,11 @@
 import { sendEmail } from "@/lib/email";
 
 export default async function handler(req, res) {
-  console.log("📩 Formulario recibido:", req.body)
+  console.log("📩 Formulario recibido:", req.body);
 
-  if (req.method !== "POST")
+  if (req.method !== "POST") {
     return res.status(405).json({ message: "Método no permitido" });
+  }
 
   const allowedOrigins = [
     "http://localhost:3000",
@@ -15,7 +16,7 @@ export default async function handler(req, res) {
     return res.status(403).json({ message: "Origen inválido" });
   }
 
-  const { name, email, subject, message } = req.body;
+  const { name, email, subject, message, phone } = req.body;
 
   if (!name || !email || !subject || !message) {
     return res
@@ -27,7 +28,11 @@ export default async function handler(req, res) {
     <h2>Gracias por contactarnos, ${name}</h2>
     <p>Hemos recibido tu mensaje y te responderemos pronto.</p>
     <hr/>
-    <p><strong>Mensaje enviado:</strong></p>
+    <p><strong>Nombre:</strong> ${name}</p>
+    <p><strong>Correo:</strong> ${email}</p>
+    <p><strong>Teléfono:</strong> ${phone || "No proporcionado"}</p>
+    <p><strong>Asunto:</strong> ${subject}</p>
+    <p><strong>Mensaje:</strong></p>
     <p>${message}</p>
   `;
 
