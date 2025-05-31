@@ -1,8 +1,11 @@
+import connectToDatabase from "@/lib/mongodb";
+import { RentalRequest } from "@/models/RentalRequest";
 import { sendEmail } from "@/lib/email";
 
 export default async function handler(req, res) {
-  if (req.method !== "POST")
+  if (req.method !== "POST") {
     return res.status(405).json({ message: "Método no permitido" });
+  }
 
   const allowedOrigins = [
     "http://localhost:3000",
@@ -40,31 +43,46 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: "Faltan campos requeridos" });
   }
 
-  const htmlContent = `
-    <h2>Solicitud de Alquiler</h2>
-    <p><strong>Nombre:</strong> ${firstName} ${lastName}</p>
-    <p><strong>Email:</strong> ${email}</p>
-    <p><strong>Teléfono:</strong> ${phone}</p>
-    <p><strong>Licencia:</strong> ${licenseNumber}</p>
-    <p><strong>Vehículo:</strong> ${vehicleName}</p>
-    <p><strong>Desde:</strong> ${startDate}</p>
-    <p><strong>Hasta:</strong> ${endDate}</p>
-    <p><strong>Dirección entrega:</strong> ${deliveryAddress}</p>
-    <p><strong>Solicitudes especiales:</strong> ${
-      specialRequests || "Ninguna"
-    }</p>
-  `;
-
   try {
+    await connectToDatabase();
+    await RentalRequest.create({
+      firstName,
+      lastName,
+      email,
+      phone,
+      licenseNumber,
+      startDate,
+      endDate,
+      deliveryAddress,
+      specialRequests,
+      vehicleName,
+    });
+
+    const htmlContent = `
+      <h2>Solicitud de Alquiler</h2>
+      <p><strong>Nombre:</strong> ${firstName} ${lastName}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Teléfono:</strong> ${phone}</p>
+      <p><strong>Licencia:</strong> ${licenseNumber}</p>
+      <p><strong>Vehículo:</strong> ${vehicleName}</p>
+      <p><strong>Desde:</strong> ${startDate}</p>
+      <p><strong>Hasta:</strong> ${endDate}</p>
+      <p><strong>Dirección entrega:</strong> ${deliveryAddress}</p>
+      <p><strong>Solicitudes especiales:</strong> ${
+        specialRequests || "Ninguna"
+      }</p>
+    `;
+
     await sendEmail({
       subject: `Confirmación de alquiler: ${vehicleName}`,
       htmlContent,
       toEmail: email,
       toName: `${firstName} ${lastName}`,
     });
-    return res.status(200).json({ message: "Solicitud enviada correctamente" })
+
+    return res.status(200).json({ message: "Solicitud enviada correctamente" });
   } catch (error) {
-    console.error("Error enviando email de alquiler:", error);
-    return res.status(500).json({ message: "Error al enviar la solicitud" });
+    console.error("Error procesando solicitud de alquiler:", error);
+    return res.status(500).json({ message: "Error interno del servidor" });
   }
 }

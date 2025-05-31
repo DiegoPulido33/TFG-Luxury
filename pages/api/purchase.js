@@ -1,3 +1,5 @@
+import connectToDatabase from "@/lib/mongodb";
+import { PurchaseRequest } from "@/models/PurchaseRequest";
 import { sendEmail } from "@/lib/email";
 
 export default async function handler(req, res) {
@@ -13,6 +15,24 @@ export default async function handler(req, res) {
     return res.status(403).json({ message: "Origen inválido" });
   }
 
+  const data = req.body;
+
+  const requiredFields = [
+    "firstName",
+    "lastName",
+    "email",
+    "phone",
+    "address",
+    "city",
+    "country",
+    "postalCode",
+    "vehicleName",
+    "price",
+  ];
+  if (requiredFields.some((field) => !data[field])) {
+    return res.status(400).json({ message: "Faltan campos requeridos" });
+  }
+
   const {
     firstName,
     lastName,
@@ -25,22 +45,10 @@ export default async function handler(req, res) {
     paymentMethod,
     vehicleName,
     price,
-  } = req.body;
+  } = data;
 
-  if (
-    !firstName ||
-    !lastName ||
-    !email ||
-    !phone ||
-    !address ||
-    !city ||
-    !country ||
-    !postalCode ||
-    !vehicleName ||
-    !price
-  ) {
-    return res.status(400).json({ message: "Faltan campos requeridos" });
-  }
+  await connectToDatabase();
+  await PurchaseRequest.create(data);
 
   const htmlContent = `
     <h2>Solicitud de Compra</h2>
@@ -60,7 +68,8 @@ export default async function handler(req, res) {
       toEmail: email,
       toName: `${firstName} ${lastName}`,
     });
-    return res.status(200).json({ message: "Solicitud enviada correctamente" })
+
+    return res.status(200).json({ message: "Solicitud enviada correctamente" });
   } catch (error) {
     console.error("Error enviando email de compra:", error);
     return res.status(500).json({ message: "Error al enviar la solicitud" });

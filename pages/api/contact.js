@@ -1,3 +1,5 @@
+import connectToDatabase from "@/lib/mongodb";
+import { ContactRequest } from "@/models/ContactRequest";
 import { sendEmail } from "@/lib/email";
 
 export default async function handler(req, res) {
@@ -24,19 +26,22 @@ export default async function handler(req, res) {
       .json({ message: "Todos los campos son obligatorios" });
   }
 
-  const htmlContent = `
-    <h2>Gracias por contactarnos, ${name}</h2>
-    <p>Hemos recibido tu mensaje y te responderemos pronto.</p>
-    <hr/>
-    <p><strong>Nombre:</strong> ${name}</p>
-    <p><strong>Correo:</strong> ${email}</p>
-    <p><strong>Teléfono:</strong> ${phone || "No proporcionado"}</p>
-    <p><strong>Asunto:</strong> ${subject}</p>
-    <p><strong>Mensaje:</strong></p>
-    <p>${message}</p>
-  `;
-
   try {
+    await connectToDatabase();
+    await ContactRequest.create({ name, email, phone, subject, message });
+
+    const htmlContent = `
+      <h2>Gracias por contactarnos, ${name}</h2>
+      <p>Hemos recibido tu mensaje y te responderemos pronto.</p>
+      <hr/>
+      <p><strong>Nombre:</strong> ${name}</p>
+      <p><strong>Correo:</strong> ${email}</p>
+      <p><strong>Teléfono:</strong> ${phone || "No proporcionado"}</p>
+      <p><strong>Asunto:</strong> ${subject}</p>
+      <p><strong>Mensaje:</strong></p>
+      <p>${message}</p>
+    `;
+
     await sendEmail({
       subject: `Confirmación de contacto: ${subject}`,
       htmlContent,
@@ -46,7 +51,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ message: "Mensaje enviado correctamente" });
   } catch (error) {
-    console.error("Error enviando email:", error);
-    return res.status(500).json({ message: "Error al enviar el mensaje" });
+    console.error("Error procesando el contacto:", error);
+    return res.status(500).json({ message: "Error interno del servidor" });
   }
 }
