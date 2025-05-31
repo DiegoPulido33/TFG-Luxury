@@ -18,7 +18,11 @@ async function fetchVehicle(id: string) {
   try {
     const res = await fetch(`/api/vehicles/${id}`);
     if (!res.ok) return null;
-    return res.json();
+    const data = await res.json();
+    // Extraer solo los números del precio (eliminar "€", "/día", etc.)
+    data.rentPrice =
+      parseFloat(data.rentPrice.replace(/[^\d.,]/g, "").replace(",", ".")) || 0;
+    return data;
   } catch (err) {
     console.error("Error fetching vehicle:", err);
     return null;
@@ -28,7 +32,6 @@ async function fetchVehicle(id: string) {
 export default function RentPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const [vehicle, setVehicle] = useState<any | null>(null);
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -41,26 +44,81 @@ export default function RentPage({ params }: { params: { id: string } }) {
     specialRequests: "",
   });
 
+  const [days, setDays] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [dateError, setDateError] = useState<string | null>(null);
+
   useEffect(() => {
     fetchVehicle(params.id).then(setVehicle);
   }, [params.id]);
 
-  if (!vehicle) {
-    return <div className="p-10 text-center">Cargando vehículo...</div>;
-  }
+  useEffect(() => {
+    if (!formData.startDate || !formData.endDate || !vehicle) {
+      setDays(0);
+      setTotalPrice(0);
+      setDateError(null);
+      return;
+    }
+
+    const start = new Date(formData.startDate);
+    const end = new Date(formData.endDate);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (start < today) {
+      setDateError("La fecha de inicio debe ser hoy o en el futuro");
+      setDays(0);
+      setTotalPrice(0);
+      return;
+    }
+    if (end <= start) {
+      setDateError("La fecha de fin debe ser posterior a la fecha de inicio");
+      setDays(0);
+      setTotalPrice(0);
+      return;
+    }
+
+    setDateError(null);
+    const diffTime = end.getTime() - start.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    setDays(diffDays);
+
+    // Usamos directamente vehicle.rentPrice que ya fue convertido a número
+    setTotalPrice(diffDays * vehicle.rentPrice);
+  }, [formData.startDate, formData.endDate, vehicle]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (dateError) {
+      alert(dateError);
+      return;
+    }
 
     try {
       const res = await fetch("/api/rent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, vehicleName: vehicle.name }),
+        body: JSON.stringify({
+          ...formData,
+          vehicleId: params.id,
+          vehicleName: vehicle.name,
+          rentPrice: vehicle.rentPrice,
+          days,
+          totalPrice,
+        }),
       });
 
-      if (!res.ok) throw new Error("Error al enviar formulario");
-      router.push("/rent/success");
+      if (!res.ok) {
+        const data = await res.json();
+        alert(data.message || "Error al enviar formulario");
+        return;
+      }
+
+      router.push(
+        `/rent/success?days=${days}&totalPrice=${totalPrice}&vehicleName=${encodeURIComponent(
+          vehicle.name
+        )}`
+      );
     } catch (error) {
       alert("Hubo un error al enviar el formulario.");
       console.error(error);
@@ -75,6 +133,10 @@ export default function RentPage({ params }: { params: { id: string } }) {
     }));
   };
 
+  if (!vehicle) {
+    return <div className="p-10 text-center">Cargando vehículo...</div>;
+  }
+
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -86,8 +148,10 @@ export default function RentPage({ params }: { params: { id: string } }) {
 
           <Card className="w-full max-w-4xl mx-auto">
             <CardHeader>
-              <CardTitle>Rent {vehicle.name}</CardTitle>
-              <CardDescription>Daily Rate: {vehicle.rentPrice}</CardDescription>
+              <CardTitle>Alquilar {vehicle.name}</CardTitle>
+              <CardDescription>
+                Precio por día: {vehicle.rentPrice.toFixed(2)} €
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -117,7 +181,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Correo</Label>
+                  <Label htmlFor="email">Correo electrónico</Label>
                   <Input
                     id="email"
                     name="email"
@@ -158,7 +222,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="startDate">Inicio fecha</Label>
+                    <Label htmlFor="startDate">Fecha de inicio</Label>
                     <Input
                       id="startDate"
                       name="startDate"
@@ -169,7 +233,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="endDate">Fin fecha</Label>
+                    <Label htmlFor="endDate">Fecha de fin</Label>
                     <Input
                       id="endDate"
                       name="endDate"
@@ -181,8 +245,12 @@ export default function RentPage({ params }: { params: { id: string } }) {
                   </div>
                 </div>
 
+                {dateError && (
+                  <p className="text-red-600 font-semibold">{dateError}</p>
+                )}
+
                 <div className="space-y-2">
-                  <Label htmlFor="deliveryAddress">Dirección de entrega </Label>
+                  <Label htmlFor="deliveryAddress">Dirección de entrega</Label>
                   <Input
                     id="deliveryAddress"
                     name="deliveryAddress"
@@ -195,7 +263,7 @@ export default function RentPage({ params }: { params: { id: string } }) {
 
                 <div className="space-y-2">
                   <Label htmlFor="specialRequests">
-                    Solicitudes especiales
+                    Solicitudes especiales (opcional)
                   </Label>
                   <Input
                     id="specialRequests"
@@ -205,11 +273,28 @@ export default function RentPage({ params }: { params: { id: string } }) {
                   />
                 </div>
 
-                <div className="pt-4">
-                  <Button type="submit" className="w-full">
-                    Proceder con el alquiler
-                  </Button>
+                <div className="mt-4 border-t pt-4">
+                  <div className="flex justify-between">
+                    <span className="font-semibold">Días de alquiler:</span>
+                    <span>{days}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-semibold">Precio por día:</span>
+                    <span>{vehicle.rentPrice.toFixed(2)} €</span>
+                  </div>
+                  <div className="flex justify-between text-lg font-bold mt-2">
+                    <span>Total estimado:</span>
+                    <span>{totalPrice.toFixed(2)} €</span>
+                  </div>
                 </div>
+
+                <Button
+                  type="submit"
+                  disabled={!!dateError || days === 0}
+                  className="w-full mt-6"
+                >
+                  Confirmar Alquiler
+                </Button>
               </form>
             </CardContent>
           </Card>
