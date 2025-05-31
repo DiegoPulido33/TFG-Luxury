@@ -14,14 +14,30 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+// Función para precios
+function parseEuropeanNumber(value: string): number {
+  const cleaned = value.replace(/[^\d,.]/g, "");
+
+  if (cleaned.indexOf(".") > -1 && cleaned.indexOf(",") > -1) {
+    return parseFloat(cleaned.replace(/\./g, "").replace(",", "."));
+  } else if (cleaned.indexOf(",") > -1) {
+    const parts = cleaned.split(",");
+    if (parts.length > 1 && parts[parts.length - 1].length === 3) {
+      return parseFloat(cleaned.replace(/,/g, ""));
+    }
+
+    return parseFloat(cleaned.replace(",", "."));
+  }
+
+  return parseFloat(cleaned);
+}
+
 async function fetchVehicle(id: string) {
   try {
     const res = await fetch(`/api/vehicles/${id}`);
     if (!res.ok) return null;
     const data = await res.json();
-    // Extraer solo los números del precio (eliminar "€", "/día", etc.)
-    data.rentPrice =
-      parseFloat(data.rentPrice.replace(/[^\d.,]/g, "").replace(",", ".")) || 0;
+    data.rentPrice = parseEuropeanNumber(data.rentPrice) || 0;
     return data;
   } catch (err) {
     console.error("Error fetching vehicle:", err);
@@ -83,7 +99,6 @@ export default function RentPage({ params }: { params: { id: string } }) {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     setDays(diffDays);
 
-    // Usamos directamente vehicle.rentPrice que ya fue convertido a número
     setTotalPrice(diffDays * vehicle.rentPrice);
   }, [formData.startDate, formData.endDate, vehicle]);
 
@@ -150,7 +165,11 @@ export default function RentPage({ params }: { params: { id: string } }) {
             <CardHeader>
               <CardTitle>Alquilar {vehicle.name}</CardTitle>
               <CardDescription>
-                Precio por día: {vehicle.rentPrice.toFixed(2)} €
+                Precio por día:{" "}
+                {new Intl.NumberFormat("es-ES", {
+                  style: "currency",
+                  currency: "EUR",
+                }).format(vehicle.rentPrice)}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -280,11 +299,21 @@ export default function RentPage({ params }: { params: { id: string } }) {
                   </div>
                   <div className="flex justify-between">
                     <span className="font-semibold">Precio por día:</span>
-                    <span>{vehicle.rentPrice.toFixed(2)} €</span>
+                    <span>
+                      {new Intl.NumberFormat("es-ES", {
+                        style: "currency",
+                        currency: "EUR",
+                      }).format(vehicle.rentPrice)}
+                    </span>
                   </div>
                   <div className="flex justify-between text-lg font-bold mt-2">
                     <span>Total estimado:</span>
-                    <span>{totalPrice.toFixed(2)} €</span>
+                    <span>
+                      {new Intl.NumberFormat("es-ES", {
+                        style: "currency",
+                        currency: "EUR",
+                      }).format(totalPrice)}
+                    </span>
                   </div>
                 </div>
 
