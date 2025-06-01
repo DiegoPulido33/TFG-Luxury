@@ -62,7 +62,7 @@ export default function Home() {
             className="absolute top-0 left-0 w-full h-full align-center z-0"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80')",
+              "url('/images/hero.avif')",
               backgroundPosition: "center",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
